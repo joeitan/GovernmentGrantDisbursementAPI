@@ -130,12 +130,12 @@ namespace GovernmentGrantDisbursementAPI.Services
             }
         }
 
-        public async Task<Response<List<GetHouseholdDTO>>> SearchFTS(int age) 
+        public Response<List<GetHouseholdDTO>> SearchFTS(int age) 
         {
             Response<List<GetHouseholdDTO>> response = new Response<List<GetHouseholdDTO>>();
             try
             {
-                List<Household> dbhouseholds = await _context.Households.FromSqlRaw($"SP_ListHouseholdIdForFamilyTogethernessScheme {age}").ToListAsync();
+                List<Household> dbhouseholds = _context.Households.FromSqlRaw($"SP_ListHouseholdIdForFamilyTogethernessScheme {age}").ToList();
                 var households = PopulateHousehold(dbhouseholds);
                 response.Data = households;
                 if (households.Count == 0)

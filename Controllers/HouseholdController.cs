@@ -27,7 +27,7 @@ namespace GovernmentGrantDisbursementAPI.Controllers
 
         //Show household
         [HttpGet("GetHouseHold/{id}")]
-        public async Task<IActionResult> GetHouseHold(int id)
+        public IActionResult GetHouseHold(int id)
         {
             return Ok(_householdService.GetHouseHold(id));
         }
@@ -41,44 +41,44 @@ namespace GovernmentGrantDisbursementAPI.Controllers
 
         //Create Household
         [HttpPost("CreateHousehold")]
-        public async Task<ActionResult> CreateHousehold(AddHouseholdDTO household)
+        public async Task<IActionResult> CreateHousehold(AddHouseholdDTO household)
         {
             return Ok(await _householdService.CreateHousehold(household));
         }
 
         //Add a family member to household
         [HttpPost("AddFamilyMemberToHousehold")]
-        public async Task<ActionResult> AddFamilyMemberToHousehold(AddFamilyMemberDTO familyMember)
+        public async Task<IActionResult> AddFamilyMemberToHousehold(AddFamilyMemberDTO familyMember)
         {
             return Ok(await _familyMemberService.AddFamilyMember(familyMember));
         }
 
         //List households and qualifying family members for Student Encouragement Bonus
         [HttpGet("GetHouseholdForSEB")]
-        public async Task<ActionResult> GetHouseholdForSEB([FromQuery] int age, [FromQuery] int income)
+        public IActionResult GetHouseholdForSEB([FromQuery] int age, [FromQuery] int income)
         {
             return Ok(_householdService.SearchSEB(age, income));
         }
         [HttpGet("GetHouseholdForFTS")]
-        public async Task<ActionResult> GetHouseholdForFTS([FromQuery] int age)
+        public IActionResult GetHouseholdForFTS([FromQuery] int age)
         {
             return Ok(_householdService.SearchFTS(age));
         }
 
         [HttpGet("GetHouseholdForEB")]
-        public async Task<ActionResult> GetHouseholdForEB([FromQuery] int age)
+        public IActionResult GetHouseholdForEB([FromQuery] int age)
         {
             return Ok(_householdService.SearchEB(age));
         }
 
         [HttpGet("GetHouseholdForYGG")]
-        public async Task<ActionResult> GetHouseholdForYGG([FromQuery] int income)
+        public IActionResult GetHouseholdForYGG([FromQuery] int income)
         {
             return Ok(_householdService.SearchYGG(income));
         }
 
         [HttpGet("GetHouseholdForBSG")]
-        public async Task<ActionResult> GetHouseholdForBSG([FromQuery] int age)
+        public IActionResult GetHouseholdForBSG([FromQuery] int age)
         {
             return Ok(_householdService.SearchBSG(age));
         }
