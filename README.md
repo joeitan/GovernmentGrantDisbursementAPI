@@ -10,5 +10,10 @@ Swagger Doucmentation: https://app.swaggerhub.com/apis-docs/Joe96/GovernmentGran
 Set Up Database:
 Go to /DBScripts and execute all the SQL scripts in an new MSSQL/Azure SQL Database 
 
+Add the following in appSettings.json
+"ConnectionStrings": {
+    "DefaultConnection": "[Database];Initial Catalog=[Catalog];Persist Security Info=False;User ID=[UserID];Password=[Password];MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+},
+
 Assumptions:
 1. 1 household will have only 1 married couple
