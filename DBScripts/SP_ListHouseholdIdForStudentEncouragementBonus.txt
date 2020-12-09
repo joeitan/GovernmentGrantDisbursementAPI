@@ -13,8 +13,8 @@ On Id = HouseholdId
 Where HouseholdId in 
 (SELECT Distinct Id FROM [dbo].[FamilyMembers] 
 Join [dbo].[Households] On Id = HouseholdId 
-WHERE DATEDIFF(year, DOB, GETDATE())  @age) 
+WHERE DATEDIFF(year, DOB, GETDATE()) < @age) 
 Group By Id 
-Having Sum(AnnualIncome)  @income)
+Having Sum(AnnualIncome) < @income)
  
 END
