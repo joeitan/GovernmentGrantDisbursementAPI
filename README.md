@@ -17,3 +17,8 @@ Add the following in appSettings.json
 
 Assumptions:
 1. 1 household will have only 1 married couple
+2. There should be only 2 married member in each household
+
+Future Improvements:
+1. Authentication
+2. Migrate DB to NoSql Database (better fit than relational Database)
