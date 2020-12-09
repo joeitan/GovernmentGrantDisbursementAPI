@@ -66,6 +66,10 @@ namespace GovernmentGrantDisbursementAPI.Services
                 {
                     response.Message = "The result is empty.";
                 }
+                else
+                {
+                    response.Message = "Success";
+                }
                 return response;
             }
             catch (Exception ex)

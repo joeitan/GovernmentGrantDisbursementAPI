@@ -1,0 +1,11 @@
+CREATE PROCEDURE SP_ListHouseholdIdForElderBonus
+@age int
+AS
+BEGIN
+SET NOCOUNT ON
+ 
+SELECT DISTINCT Id, HousingType FROM [dbo].[FamilyMembers] 
+Join [dbo].[Households] On Id = HouseholdId 
+WHERE DATEDIFF(year, DOB, GETDATE()) > @age
+ 
+END

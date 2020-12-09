@@ -1,0 +1,8 @@
+INSERT INTO OccupationTypes (OccupationType) 
+VALUES ('Employed');
+
+INSERT INTO OccupationTypes (OccupationType) 
+VALUES ('Employed');
+
+INSERT INTO OccupationTypes (OccupationType) 
+VALUES ('Employed');

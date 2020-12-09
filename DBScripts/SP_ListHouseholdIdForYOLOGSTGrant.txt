@@ -1,0 +1,13 @@
+CREATE PROCEDURE SP_ListHouseholdIdForYOLOGSTGrant
+@income int
+AS
+BEGIN
+SET NOCOUNT ON
+ 
+SELECT Id, HousingType From [dbo].[Households] WHERE Id In
+(SELECT DISTINCT Id FROM [dbo].[FamilyMembers] 
+Join [dbo].[Households] On Id = HouseholdId 
+Group By Id 
+Having Sum(AnnualIncome) < @income)
+
+END

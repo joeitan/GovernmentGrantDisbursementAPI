@@ -1,0 +1,20 @@
+CREATE TABLE Households (
+    Id INT PRIMARY KEY,
+    HousingType nvarchar(20)
+)
+
+CREATE TABLE FamilyMembers (
+    MemberName nvarchar(50),
+    Gender nvarchar(10),
+    MaritalStatus nvarchar(20),
+    Spouse  nvarchar(50),
+    OccupationType  nvarchar(20),
+    AnnualIncome decimal(18,2),
+    DOB date,
+    HouseholdId int FOREIGN KEY REFERENCES [dbo].[Households](Id)
+);
+
+CREATE TABLE OccupationTypes (
+    Id int PRIMARY KEY IDENTITY(1,1),
+    OccupationType nvarchar(20)
+);

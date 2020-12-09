@@ -1,0 +1,12 @@
+CREATE PROCEDURE SP_ListHouseholdIdForFamilyTogethernessScheme
+@age int
+AS
+BEGIN
+SET NOCOUNT ON
+
+SELECT DISTINCT Id, HousingType FROM [dbo].[FamilyMembers] Join [dbo].[Households] on Id = HouseholdId
+Where MaritalStatus = 'Married' 
+AND  HouseholdId in 
+(SELECT Distinct Id FROM [dbo].[FamilyMembers] Join [dbo].[Households] On Id = HouseholdId WHERE DATEDIFF(year, DOB, GETDATE()) < @age) 
+
+END
